@@ -1,0 +1,6 @@
+import{c,j as a,L as l}from"./index-CclIQlOS.js";import{C as o}from"./chevron-right-Ds9gOhPy.js";/**
+ * @license lucide-react v0.545.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const d=[["path",{d:"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8",key:"5wwlr5"}],["path",{d:"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",key:"r6nss1"}]],m=c("house",d);function u({items:n}){const t=[{label:"Home",href:"/"},...n];return a.jsx("nav",{"aria-label":"Breadcrumb",className:"flex items-center gap-1 text-sm text-muted-foreground flex-wrap",children:t.map((r,e)=>{const s=e===t.length-1;return a.jsxs("span",{className:"flex items-center gap-1",children:[e>0&&a.jsx(o,{className:"h-3.5 w-3.5 shrink-0"}),e===0&&a.jsx(m,{className:"h-3.5 w-3.5 shrink-0"}),r.href&&!s?a.jsx(l,{href:r.href,className:"hover:text-primary transition-colors","data-testid":`breadcrumb-link-${e}`,children:r.label}):a.jsx("span",{className:s?"text-foreground font-medium":"","aria-current":s?"page":void 0,"data-testid":`breadcrumb-current-${e}`,children:r.label})]},e)})})}export{u as B};
