@@ -5,12 +5,12 @@
   "type": "module",
   
   "scripts": {
-    "dev": "vite",
-    "build": "npx tsc -p tsconfig.json --noEmit && vite build",
-    "preview": "vite preview",
-    "postinstall": "chmod +x node_modules/.bin/tsc",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
-  },
+  "dev": "vite",
+  "build": "npx tsc -p tsconfig.json --noEmit && vite build",
+  "preview": "vite preview",
+  "postinstall": "chmod +x node_modules/.bin/tsc && chmod +x node_modules/.bin/vite",
+  "typecheck": "tsc -p tsconfig.json --noEmit"
+},
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.4",
