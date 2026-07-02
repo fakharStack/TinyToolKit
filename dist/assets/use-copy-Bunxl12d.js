@@ -1,1 +1,0 @@
-import{t as c,r as i}from"./index-CclIQlOS.js";function l(e="Copied to clipboard!"){const{toast:t}=c(),[r,a]=i.useState(!1),s=i.useCallback(async o=>{if(o)try{await navigator.clipboard.writeText(o),a(!0),t({title:e}),setTimeout(()=>a(!1),2e3)}catch{t({variant:"destructive",title:"Copy failed",description:"Please copy manually."})}},[t,e]);return{isCopied:r,copy:s}}export{l as u};
