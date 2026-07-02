@@ -1,12 +1,26 @@
-import React from "react";
+import { useEffect } from "react";
+
+const SCRIPT_SRC =
+  "https://missiondifferentyawn.com/8443c8aa56086a449263b85c48bce7a0/invoke.js";
+const CONTAINER_ID = "container-8443c8aa56086a449263b85c48bce7a0";
+
+let scriptInjected = false;
 
 export default function AdContainer() {
+  useEffect(() => {
+    if (scriptInjected) return;
+    scriptInjected = true;
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.setAttribute("data-cfasync", "false");
+    script.src = SCRIPT_SRC;
+    document.body.appendChild(script);
+  }, []);
+
   return (
-    <div 
-      className="ad-container my-8 w-full max-w-[728px] mx-auto h-[90px] border border-dashed border-muted flex items-center justify-center bg-muted/10 rounded-md text-muted-foreground text-sm font-medium tracking-wider uppercase"
-      data-testid="ad-placeholder"
-    >
-      Advertisement
+    <div className="my-8 w-full max-w-[728px] mx-auto min-h-[90px] flex justify-center">
+      <div id={CONTAINER_ID} />
     </div>
   );
 }
