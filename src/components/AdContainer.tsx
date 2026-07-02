@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 
-const SCRIPT_SRC =
-  "https://missiondifferentyawn.com/8443c8aa56086a449263b85c48bce7a0/invoke.js";
-const CONTAINER_ID = "container-8443c8aa56086a449263b85c48bce7a0";
+const AD_KEY = "c7780a2e0ce0bffc7be227c93075792c";
+const SCRIPT_SRC = `https://missiondifferentyawn.com/${AD_KEY}/invoke.js`;
 
 let scriptInjected = false;
 
@@ -11,16 +10,21 @@ export default function AdContainer() {
     if (scriptInjected) return;
     scriptInjected = true;
 
+    // Set atOptions before loading the script
+    (window as unknown as Record<string, unknown>).atOptions = {
+      key: AD_KEY,
+      format: "iframe",
+      height: 90,
+      width: 728,
+      params: {},
+    };
+
     const script = document.createElement("script");
-    script.async = true;
-    script.setAttribute("data-cfasync", "false");
     script.src = SCRIPT_SRC;
     document.body.appendChild(script);
   }, []);
 
   return (
-    <div className="my-8 w-full max-w-[728px] mx-auto min-h-[90px] flex justify-center">
-      <div id={CONTAINER_ID} />
-    </div>
+    <div className="my-8 w-full max-w-[728px] mx-auto flex justify-center min-h-[90px]" />
   );
 }
