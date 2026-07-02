@@ -1,30 +1,58 @@
 import { useEffect } from "react";
 
-const AD_KEY = "c7780a2e0ce0bffc7be227c93075792c";
-const SCRIPT_SRC = `https://missiondifferentyawn.com/${AD_KEY}/invoke.js`;
+const NATIVE_SCRIPT =
+  "https://missiondifferentyawn.com/8443c8aa56086a449263b85c48bce7a0/invoke.js";
 
-let scriptInjected = false;
+const NATIVE_CONTAINER =
+  "container-8443c8aa56086a449263b85c48bce7a0";
+
+const BANNER_KEY =
+  "c7780a2e0ce0bffc7be227c93075792c";
+
+const BANNER_SCRIPT =
+  `https://missiondifferentyawn.com/${BANNER_KEY}/invoke.js`;
+
+let initialized = false;
 
 export default function AdContainer() {
   useEffect(() => {
-    if (scriptInjected) return;
-    scriptInjected = true;
+    if (initialized) return;
 
-    // Set atOptions before loading the script
-    (window as unknown as Record<string, unknown>).atOptions = {
-      key: AD_KEY,
+    initialized = true;
+
+    // Native Banner
+    const nativeScript = document.createElement("script");
+    nativeScript.async = true;
+    nativeScript.setAttribute("data-cfasync", "false");
+    nativeScript.src = NATIVE_SCRIPT;
+
+    document.body.appendChild(nativeScript);
+
+    // 728×90 Banner
+    (window as any).atOptions = {
+      key: BANNER_KEY,
       format: "iframe",
-      height: 90,
       width: 728,
+      height: 90,
       params: {},
     };
 
-    const script = document.createElement("script");
-    script.src = SCRIPT_SRC;
-    document.body.appendChild(script);
+    const bannerScript = document.createElement("script");
+    bannerScript.async = true;
+    bannerScript.src = BANNER_SCRIPT;
+
+    document.body.appendChild(bannerScript);
   }, []);
 
   return (
-    <div className="my-8 w-full max-w-[728px] mx-auto flex justify-center min-h-[90px]" />
+    <div className="flex flex-col items-center gap-8 my-8">
+
+      {/* Native Banner */}
+      <div id={NATIVE_CONTAINER} />
+
+      {/* 728×90 Banner */}
+      <div className="w-full max-w-[728px] min-h-[90px] flex justify-center" />
+
+    </div>
   );
 }
