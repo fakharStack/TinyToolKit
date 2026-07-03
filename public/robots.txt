@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fastlinktools.com/sitemap.xml
+Sitemap: https://tiny-tool-kit.vercel.app/sitemap.xml
